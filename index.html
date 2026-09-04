@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#e91e63">
+<title>30 razones por las que te quiero ❤️</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:white;text-align:center;background:radial-gradient(circle at 20% 10%,#ffb5cc,transparent 28%),radial-gradient(circle at 85% 85%,#b51d62,transparent 32%),linear-gradient(135deg,#ff4f91,#8e174f);overflow:hidden}.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:18px;position:relative}.content{width:min(700px,100%);position:relative;z-index:2}.heart{font-size:100px;animation:beat 1.4s infinite}@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.12)}30%{transform:scale(1)}}h1{font-size:clamp(32px,8vw,56px);margin:8px 0}.intro p{font-size:19px;line-height:1.5}.btn{border:0;border-radius:999px;padding:15px 26px;font-size:17px;font-weight:800;color:#a20f4f;background:white;box-shadow:0 10px 30px #0003}.app{display:none}.counter{font-weight:800;margin:8px}.card{min-height:390px;padding:28px 20px;border-radius:28px;background:#fffffff2;color:#8e174f;display:flex;flex-direction:column;justify-content:center;align-items:center;box-shadow:0 22px 55px #37001940}.num{font-weight:800;opacity:.7}.reason{font-size:clamp(28px,7vw,48px);font-weight:900;color:#df1e62;margin:20px 0 12px;line-height:1.15}.text{font-size:clamp(16px,4.5vw,21px);line-height:1.55;max-width:570px}.smallheart{font-size:52px;margin-top:18px;animation:beat 1.4s infinite}.controls{display:flex;justify-content:center;gap:10px;margin-top:15px;flex-wrap:wrap}.control{border:0;border-radius:15px;padding:13px 18px;font-size:16px;font-weight:800;color:#9a1850;background:white;box-shadow:0 8px 20px #0002}.petal{position:fixed;top:-30px;z-index:1;animation:fall linear forwards}@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(520deg);opacity:.1}}@media(max-width:600px){.card{min-height:370px}}
+</style>
+</head>
+<body><div class="wrap"><div class="content">
+<section class="intro" id="intro"><div class="heart">💗</div><h1>Para mi Kimchi ❤️</h1><p>30 razones por las que te quiero.<br>Una por una, para que nunca olvides lo especial que eres para mí.</p><button class="btn" onclick="start()">Abrir mi sorpresa 💌</button></section>
+<section class="app" id="app"><h2>30 razones por las que te quiero 💗</h2><div class="counter" id="counter"></div><div class="card" id="card"><div class="num" id="num"></div><div class="reason" id="reason"></div><div class="text" id="text"></div><div class="smallheart">❤️</div></div><div class="controls"><button class="control" onclick="prev()">⬅️ Regresar</button><button class="control" onclick="next()">Siguiente ➡️</button></div></section>
+</div></div>
+<script>
+const r=[
+["Tu forma de ser","Porque eres tú, y eso ya es una razón enorme para quererte."],
+["Tu sonrisa","Porque cuando sonríes, haces que mi día se sienta más bonito."],
+["Tu mirada","Porque hay algo en tu mirada que siempre consigue llamar mi atención."],
+["Cómo me haces sentir","Porque contigo puedo sentirme feliz, querido y en paz."],
+["Tus pequeños detalles","Porque los detalles pequeños pueden significar muchísimo cuando vienen de ti."],
+["Tu sentido del humor","Porque me encanta reír contigo y compartir nuestras ocurrencias."],
+["Tu forma de hablar","Porque podría escucharte durante horas."],
+["Tu personalidad","Porque tienes una personalidad que hace que seas imposible de reemplazar."],
+["La confianza que me das","Porque contigo siento que puedo ser yo mismo."],
+["Tus ocurrencias","Porque nunca sé qué vas a decir y eso hace todo más divertido."],
+["Tu manera de querer","Porque tu forma de demostrar cariño se siente especial."],
+["Tus abrazos","Porque un abrazo tuyo puede hacer que todo parezca estar bien."],
+["Cómo me haces sonreír","Porque incluso un día normal se vuelve especial contigo."],
+["Tu paciencia","Porque sabes estar conmigo incluso cuando no tengo las palabras correctas."],
+["Tu corazón","Porque tienes un corazón que quiero cuidar muchísimo."],
+["Tus mensajes","Porque ver un mensaje tuyo puede cambiar mi día."],
+["Los momentos contigo","Porque hasta los momentos sencillos se convierten en recuerdos bonitos."],
+["Tu autenticidad","Porque no necesitas fingir para ser increíble."],
+["Cómo me escuchas","Porque sentir que me escuchas de verdad significa mucho para mí."],
+["Tu forma de preocuparte","Porque saber que te importo es una sensación preciosa."],
+["Tus locuras","Porque hacen que nuestra historia sea única."],
+["Tu compañía","Porque contigo hasta no hacer nada se siente como un buen plan."],
+["Cómo me inspiras","Porque me motivas a ser mejor cada día."],
+["Tus palabras","Porque algunas de tus palabras se quedan conmigo mucho después de escucharlas."],
+["Lo especial que eres","Porque no existe otra persona exactamente como tú."],
+["Nuestros recuerdos","Porque cada recuerdo contigo ocupa un lugar especial en mi corazón."],
+["Lo que tenemos","Porque valoro muchísimo lo que hemos construido juntos."],
+["Que eres mi Kimchi","Porque ese nombre ya tiene un lugar muy especial en mi corazón."],
+["Porque contigo soy feliz","Porque hay una felicidad muy bonita que simplemente aparece cuando estás tú."],
+["Porque te quiero","Porque, después de todas estas razones, la más sencilla sigue siendo la más importante: te quiero. ❤️"]
+];
+let i=0;
+function start(){document.getElementById("intro").style.display="none";document.getElementById("app").style.display="block";show();petals(20)}
+function show(){document.getElementById("counter").textContent=(i+1)+" / 30";document.getElementById("num").textContent="Razón #"+(i+1);document.getElementById("reason").textContent=r[i][0];document.getElementById("text").textContent=r[i][1];petals(i===29?15:3)}
+function next(){if(i<29){i++;show()}else petals(25)}
+function prev(){if(i>0){i--;show()}}
+function petals(n){for(let x=0;x<n;x++){let p=document.createElement("div");p.className="petal";p.textContent=Math.random()>.5?"🌸":"💗";p.style.left=Math.random()*100+"vw";p.style.fontSize=(14+Math.random()*18)+"px";p.style.setProperty("--x",(-120+Math.random()*240)+"px");p.style.animationDuration=(3.5+Math.random()*4)+"s";document.body.appendChild(p);setTimeout(()=>p.remove(),8000)}}
+</script></body></html>
